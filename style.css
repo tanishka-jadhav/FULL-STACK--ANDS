@@ -1,0 +1,188 @@
+/* Global Reset and Box Model Configuration */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Design Tokens & Theme Variables */
+:root {
+    --bg-main: #0f172a;
+    --bg-card: #1e293b;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --primary: #38bdf8;
+    --accent: #10b981;
+    --error: #ef4444;
+    --border-radius: 12px;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    line-height: 1.6;
+}
+
+/* Header & Flexbox Navigation Bar */
+header {
+    background-color: rgba(30, 41, 59, 0.8);
+    backdrop-filter: blur(8px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.logo span {
+    color: var(--primary);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
+}
+
+.nav-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.nav-links a:hover, .nav-links a.active {
+    color: var(--primary);
+}
+
+/* Dashboard Core Layout Framework */
+.dashboard-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+}
+
+.hero-section {
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+.hero-section h1 {
+    font-size: 2.25rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    letter-spacing: -1px;
+    background: linear-gradient(to right, #fff, var(--text-muted));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-section p {
+    color: var(--text-muted);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* 2D CSS Grid Layout Framework (Mobile First Default) */
+.data-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Single column layout on phone viewports */
+    gap: 1.5rem;
+}
+
+/* Card Styling Components */
+.card {
+    background-color: var(--bg-card);
+    border: 1px solid rgba(148, 163, 184, 0.1);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
+    transition: var(--transition);
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(56, 189, 248, 0.4);
+    box-shadow: 0 10px 20px -10px rgba(0, 0, 0, 0.5);
+}
+
+.card h3 {
+    font-size: 1.25rem;
+    color: var(--primary);
+}
+
+.card p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+.badge {
+    align-self: flex-start;
+    background-color: rgba(16, 185, 129, 0.1);
+    color: var(--accent);
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.badge.primary {
+    background-color: rgba(56, 189, 248, 0.1);
+    color: var(--primary);
+}
+
+/* Dynamic State Styling */
+.loading-state {
+    border-style: dashed;
+    border-color: var(--text-muted);
+}
+
+.profile-card h3 {
+    color: var(--accent);
+}
+
+.error-message {
+    color: var(--error);
+    font-weight: 500;
+}
+
+footer {
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    border-top: 1px solid rgba(148, 163, 184, 0.1);
+    margin-top: 5rem;
+}
+
+/* Responsive Adaptive Architecture Layout Changes */
+@media (min-width: 768px) {
+    .hero-section h1 {
+        font-size: 3rem;
+    }
+    
+    .data-grid {
+        /* Automatically switches layout behavior to handle 3 columns at large widths */
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
